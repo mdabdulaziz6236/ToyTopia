@@ -12,32 +12,36 @@ import {
 const auth = getAuth(app);
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
-  const [userLoading, setUserLoading] = useState(true)
+  const [userLoading, setUserLoading] = useState(true);
   // const [user, setUser] = useState({
   //   name: "MD. ABDUL AZIZ",
   //   email: 'md.abdulaziz6236@gmail.com'
   // })
-  console.log(user )
+  console.log(user);
   const createUser = (email, password) => {
+    // setUserLoading(true);
     return createUserWithEmailAndPassword(auth, email, password);
   };
   const login = (email, password) => {
+    setUserLoading(true);
     return signInWithEmailAndPassword(auth, email, password);
   };
-  const logout =()=>{
-    return signOut(auth)
-  }
-  const updateUser = (updateData) =>{
-    return updateProfile(auth.currentUser, updateData)
-  }
+  const logout = () => {
+    
+    return signOut(auth);
+  };
+  const updateUser = (updateData) => {
+   
+    return updateProfile(auth.currentUser, updateData);
+  };
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
-      return () => {
-        unsubscribe();
-      };
-    });
-  });
+      setUserLoading(false);
+      return () => unsubscribe();
+    })
+    
+  }, []);
   const authData = {
     createUser,
     user,

@@ -4,9 +4,11 @@ import MyLink from "./MyLink";
 
 import { AuthContext } from "../Provider/AuthContext";
 import { Link } from "react-router";
+import Loading from "./Loading";
+import { toast } from "react-toastify";
 
 const Navbar = () => {
-  const { user, logout } = use(AuthContext);
+  const { user, logout, userLoading } = use(AuthContext);
   const links = (
     <>
       <li>
@@ -28,12 +30,14 @@ const Navbar = () => {
   const handleLogout = () => {
     logout()
       .then(() => {
-        alert("user Logged out");
+        toast.success("user Logged out")
+        // alert("user Logged out");
       })
       .catch((error) => {
         console.log("this is logged out error:", error);
       });
   };
+  if(!userLoading && <Loading></Loading> )
   return (
     <div className="  bg-linear-to-t from-sky-500 to-indigo-500 hover:bg-green-500 shadow-sm">
       <MyContainer className="navbar">
@@ -71,15 +75,17 @@ const Navbar = () => {
         <div className="navbar-end">
           <div className="flex gap-5">
             {user ? (
-              <img
-                className="w-12 rounded-full"
-                src={user && user.photoURL}
-                alt=""
-              />
-            ) : (
-              ""
-            )}
-            {user ? (
+  <img 
+    className="w-12 rounded-full"
+    src={user.photoURL}
+    alt={user.displayName || "User"}
+    title={user.displayName || "User"} // <-- This shows the name on hover
+  />
+) : (
+  ""
+)}
+
+            {user  ? (
               <button onClick={handleLogout} className="btn btn-primary px-5">
                 Logout
               </button>

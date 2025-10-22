@@ -1,6 +1,7 @@
 import React, { use, useState } from "react";
 import { Link, useNavigate } from "react-router";
 import { AuthContext } from "../Provider/AuthContext";
+import { toast } from "react-toastify";
 
 const Login = () => {
   const {login,setUser} = use(AuthContext)
@@ -35,8 +36,8 @@ const Login = () => {
     login(email,password)
     .then(userCredential =>{
         const user = userCredential.user
-        
-        alert('user sign in' , user.name)
+        toast.success('user sign in' , user.displayName)
+        // alert('user sign in' , user.displayName)
         setUser(user)
         navigate('/') 
     }).catch(error => {

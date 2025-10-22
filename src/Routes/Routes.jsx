@@ -15,7 +15,9 @@ export const router = createBrowserRouter([
     children: [
       {
         path: "",
-        Component: Home,
+        element: <PrivetRouter>
+          <Home></Home>
+        </PrivetRouter>
       },
       {
         path: "/register",

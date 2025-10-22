@@ -2,6 +2,7 @@ import React, { use, useState } from "react";
 // import { useNavigate } from 'react-router';
 import { AuthContext } from "../Provider/AuthContext";
 import { Link, useNavigate } from "react-router";
+import { toast } from "react-toastify";
 
 const Register = () => {
   const navigate = useNavigate();
@@ -57,8 +58,8 @@ const Register = () => {
             console.log(error);
             setUser(user);
           });
-
-        alert("register successfully");
+          toast.success("Register Successful.")
+        // alert("register successfully");
       })
       .catch((error) => {
         // const errorCode = error.code
@@ -125,7 +126,7 @@ const Register = () => {
             )}
 
             <button type="submit" className="btn btn-neutral mt-5">
-              Google Login
+              Sign Up
             </button>
           </fieldset>
           <p className="font-semibold text-center">
