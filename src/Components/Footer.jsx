@@ -1,8 +1,10 @@
 import React from "react";
+import MyContainer from "./MyContainer";
 
 const Footer = () => {
   return (
-    <footer className="footer sm:footer-horizontal bg-base-200 text-base-content p-10">
+    <footer className=" bg-linear-65 from-purple-500 to-pink-500 text-base-content">
+      <MyContainer className="footer sm:footer-horizontal py-10">
       <nav>
         <h6 className="footer-title">Services</h6>
         <a className="link link-hover">Branding</a>
@@ -25,7 +27,7 @@ const Footer = () => {
       </nav>
       <form>
         <h6 className="footer-title">Newsletter</h6>
-        <fieldset className="w-80">
+        <fieldset className=" sm:w-40 md:w-50 lg:w-80">
           <label>Enter your email address</label>
           <div className="join">
             <input
@@ -33,10 +35,11 @@ const Footer = () => {
               placeholder="username@site.com"
               className="input input-bordered join-item"
             />
-            <button className="btn btn-primary join-item">Subscribe</button>
+            <button className="btn btn-primary sm:w-20 join-item">Subscribe</button>
           </div>
         </fieldset>
       </form>
+    </MyContainer>
     </footer>
   );
 };

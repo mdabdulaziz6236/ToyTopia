@@ -6,11 +6,11 @@ import MyContainer from "../Components/MyContainer";
 
 const HomeLayout = () => {
   return (
-    <div>
-       <Navbar></Navbar>
-      <div className="flex-1">
+    <div className="flex flex-col min-h-screen">
+       <Navbar ></Navbar>
+      <MyContainer className="flex-1">
         <Outlet></Outlet>
-      </div>
+      </MyContainer>
       <Footer></Footer>
     </div>
   );
