@@ -3,13 +3,24 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { Autoplay, Navigation, Pagination } from "swiper/modules";
-// import { Navigation, Pagination, Autoplay } from "swiper";
 
 const HomeSlider = () => {
   const slides = [
-    { id: 1, title: "Lego Fun!", img: "https://i.ibb.co.com/9H4X8FxQ/kids-spelled-word-with-plastic-blocks-background.jpg" },
-    { id: 2, title: "Doll Collection", img: "https://i.ibb.co.com/DfJ079gT/close-up-adorable-amigurumi-duck.jpg" },
-    { id: 3, title: "Puzzle Time", img: "https://i.ibb.co.com/zHRbWN6w/images-1.jpg" },
+    {
+      id: 1,
+      title: "Lego Fun!",
+      img: "https://i.ibb.co/9H4X8FxQ/kids-spelled-word-with-plastic-blocks-background.jpg",
+    },
+    {
+      id: 2,
+      title: "Doll Collection",
+      img: "https://i.ibb.co/DfJ079gT/close-up-adorable-amigurumi-duck.jpg",
+    },
+    {
+      id: 3,
+      title: "Puzzle Time",
+      img: "https://i.ibb.co/zHRbWN6w/images-1.jpg",
+    },
   ];
 
   return (
@@ -17,18 +28,22 @@ const HomeSlider = () => {
       modules={[Navigation, Pagination, Autoplay]}
       navigation
       pagination={{ clickable: true }}
-      autoplay={{ delay: 5000 }}
+      autoplay={{
+        delay: 5000, // slide stays 5 seconds
+        disableOnInteraction: false,
+      }}
+      speed={1500} // slow transition speed in ms
       loop
     >
       {slides.map((slide) => (
         <SwiperSlide key={slide.id}>
-          <div className="relative w-full h-96">
+          <div className="relative w-full h-[500px] rounded-2xl overflow-hidden shadow-lg">
             <img
               src={slide.img}
               alt={slide.title}
-              className="w-full object-cover "
+              className="w-full h-full object-cover transition-transform duration-500"
             />
-            <h2 className="absolute bottom-5 left-5 text-2xl font-bold text-white">
+            <h2 className="absolute bottom-5 left-5 text-2xl font-bold text-white drop-shadow-lg">
               {slide.title}
             </h2>
           </div>

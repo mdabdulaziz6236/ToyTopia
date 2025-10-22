@@ -1,0 +1,39 @@
+
+[
+  {
+    "toyId": 1,
+    "toyName": "Lego Classic Bricks",
+    "sellerName": "Toys R Us Local",
+    "sellerEmail": "contact@toysruslocal.com",
+    "price": 49.99,
+    "rating": 4.7,
+    "availableQuantity": 75,
+    "description": "A timeless set of colorful Lego bricks that encourages creativity and problem-solving. Kids can build anything they imagine, from houses to vehicles.",
+    "pictureURL": "https://i.ibb.co.com/9H4X8FxQ/kids-spelled-word-with-plastic-blocks-background.jpg",
+    "subCategory": "Building Blocks"
+  },
+  {
+    "toyId": 2,
+    "toyName": "Barbie Doll",
+    "sellerName": "Local Doll Store",
+    "sellerEmail": "info@dollstore.com",
+    "price": 29.99,
+    "rating": 4.5,
+    "availableQuantity": 50,
+    "description": "Beautiful Barbie doll with multiple outfits and accessories. Perfect for imaginative play and storytelling.",
+    "pictureURL": "https://i.ibb.co.com/DfJ079gT/close-up-adorable-amigurumi-duck.jpg",
+    "subCategory": "Dolls"
+  },
+  {
+    "toyId": 3,
+    "toyName": "Puzzle Fun",
+    "sellerName": "Puzzle House",
+    "sellerEmail": "contact@puzzlehouse.com",
+    "price": 19.99,
+    "rating": 4.3,
+    "availableQuantity": 100,
+    "description": "Colorful and challenging puzzle sets to boost problem-solving skills and patience.",
+    "pictureURL": "https://i.ibb.co.com/zHRbWN6w/images-1.jpg",
+    "subCategory": "Puzzles"
+  }
+]
