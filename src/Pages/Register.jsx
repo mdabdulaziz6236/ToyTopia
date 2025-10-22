@@ -1,12 +1,14 @@
-import React, {  useState } from 'react';
+import React, {  use, useState } from "react";
 // import { useNavigate } from 'react-router';
-import { AuthContext } from '../Provider/AuthContext';
-import { Link } from 'react-router';
+import { AuthContext } from "../Provider/AuthContext";
+import { Link } from "react-router";
 
 const Register = () => {
-    const [nameError, setNameError] = useState("");
-//   const navigate = useNavigate()
-//   const { createUser, setUser, updateUser } = use(AuthContext);
+  const [nameError, setNameError] = useState("");
+  const [passwordError, setPasswordError] = useState("");
+  const [emailError, setEmailError] = useState("");
+  const {createUser} = use(AuthContext)
+
   const handleRegister = (event) => {
     event.preventDefault();
     const name = event.target.name.value;
@@ -16,17 +18,47 @@ const Register = () => {
     } else {
       setNameError("");
     }
-    const photoUrl = event.target.photoUrl.value;
     const email = event.target.email.value;
-    const password = event.target.password.value;
-    console.log({ name, photoUrl, email, password });
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    if (emailRegex.test(email)) {
+      setEmailError("");
+    } else {
+      setEmailError(
+        " Please enter a valid email address (e.g., user@example.com)"
+      );
+      return;
     }
-    return (
-        <div className="flex justify-center items-center min-h-screen">
+    const photoUrl = event.target.photoUrl.value;
+    const password = event.target.password.value;
+    const regex = /^(?=.*[A-Z])(?=.*[a-z]).{6,}$/;
+    if (regex.test(password)) {
+      setPasswordError("");
+    } else {
+      setPasswordError(
+        "Password must include uppercase, lowercase and be at least 6 characters long!"
+      );
+      return;
+    }
+    console.log({ name, photoUrl, email, password });
+
+    createUser(email,password)
+    .then(userCredential =>{
+        const user = userCredential.user
+        console.log(user) 
+    }).catch(error => {
+        const errorCode = error.code 
+        const errorMessage = error.message
+        console.log('errorcode:',errorCode, "errorMessage:",errorMessage)
+    })
+    
+  };
+  return (
+    <div className="flex justify-center items-center min-h-screen">
       <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
         <h1 className="font-semibold text-3xl text-center mt-5">
           Register your account
         </h1>
+        {/* {import.meta.env.VITE_name} */}
         <form onSubmit={handleRegister} className="card-body">
           <fieldset className="fieldset">
             {/* name */}
@@ -50,6 +82,9 @@ const Register = () => {
               placeholder="Email"
               required
             />
+            {emailError && (
+              <p className="text-sm text-secondary text-center">{emailError}</p>
+            )}
             {/* phot url */}
             <label className="label">Photo URL</label>
             <input
@@ -59,7 +94,7 @@ const Register = () => {
               placeholder="Enter Your Photo URL"
               required
             />
-            
+
             {/* password */}
             <label className="label">Password</label>
             <input
@@ -69,11 +104,14 @@ const Register = () => {
               placeholder="Password"
               required
             />
-            <div>
-              <a className="link link-hover">Forgot password?</a>
-            </div>
+            {passwordError && (
+              <p className="text-sm text-secondary text-center">
+                {passwordError}
+              </p>
+            )}
+
             <button type="submit" className="btn btn-neutral mt-5">
-             Google Login
+              Google Login
             </button>
           </fieldset>
           <p className="font-semibold text-center">
@@ -82,13 +120,13 @@ const Register = () => {
               to="/login"
               className="text-green-500 font-semibold  hover:underline hover:text-pink-500"
             >
-               Login
+              Login
             </Link>
           </p>
         </form>
       </div>
     </div>
-    );
+  );
 };
 
 export default Register;
