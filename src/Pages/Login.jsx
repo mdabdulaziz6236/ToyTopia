@@ -1,9 +1,13 @@
-import React, { useState } from "react";
-import { Link } from "react-router";
+import React, { use, useState } from "react";
+import { Link, useNavigate } from "react-router";
+import { AuthContext } from "../Provider/AuthContext";
 
 const Login = () => {
+  const {login, setUser} = use(AuthContext)
+  const navigate = useNavigate()
     const [passwordError, setPasswordError] = useState("");
     const [emailError, setEmailError] = useState("");
+    const [error,setError] = useState('')
   const handleLogIn = (e) => {
     e.preventDefault();
     const email = e.target.email.value;
@@ -28,6 +32,17 @@ const Login = () => {
 
       return;
     }
+    login(email,password)
+    .then(userCredential =>{
+        const user1 = userCredential.user
+        setUser(user1)
+        alert('user sign in')
+        navigate('/') 
+    }).catch(error => {
+        // const errorCode = error.code 
+        const errorMessage = error.message
+        setError(errorMessage)
+    })
     console.log(email, password);
   };
   return (
@@ -81,9 +96,9 @@ const Login = () => {
               Register
             </Link>
           </p>
-          {/* {error ? (
+          {error ? (
             <p className="text-center text-secondary font-semibold">{error}</p>
-          ):""} */}
+          ):""}
         </form>
       </div>
     </div>
