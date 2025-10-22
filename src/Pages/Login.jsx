@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router";
 import { AuthContext } from "../Provider/AuthContext";
 
 const Login = () => {
-  const {login, setUser} = use(AuthContext)
+  const {login,setUser} = use(AuthContext)
   const navigate = useNavigate()
     const [passwordError, setPasswordError] = useState("");
     const [emailError, setEmailError] = useState("");
@@ -34,9 +34,10 @@ const Login = () => {
     }
     login(email,password)
     .then(userCredential =>{
-        const user1 = userCredential.user
-        setUser(user1)
-        alert('user sign in')
+        const user = userCredential.user
+        
+        alert('user sign in' , user.name)
+        setUser(user)
         navigate('/') 
     }).catch(error => {
         // const errorCode = error.code 

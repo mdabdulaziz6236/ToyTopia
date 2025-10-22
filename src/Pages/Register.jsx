@@ -1,14 +1,14 @@
-import React, {  use, useState } from "react";
+import React, { use, useState } from "react";
 // import { useNavigate } from 'react-router';
 import { AuthContext } from "../Provider/AuthContext";
 import { Link, useNavigate } from "react-router";
 
 const Register = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const [nameError, setNameError] = useState("");
   const [passwordError, setPasswordError] = useState("");
   const [emailError, setEmailError] = useState("");
-  const {createUser , setUser } = use(AuthContext)
+  const { createUser, setUser, updateUser } = use(AuthContext);
 
   const handleRegister = (event) => {
     event.preventDefault();
@@ -42,18 +42,29 @@ const Register = () => {
     }
     console.log({ name, photoUrl, email, password });
 
-    createUser(email,password)
-    .then(userCredential =>{
-        const user1 = userCredential.user
-        setUser(user1)
-        alert('register successfully')
-       navigate('/')
-    }).catch(error => {
-        const errorCode = error.code 
-        const errorMessage = error.message
-        console.log('errorcode:',errorCode, "errorMessage:",errorMessage)
-    })
-    
+    createUser(email, password)
+      .then((userCredential) => {
+        const user = userCredential.user;
+        updateUser({
+          displayName: name,
+          photoURL: photoUrl,
+        })
+          .then(() => {
+            setUser({ ...user, displayName: name, photoURL: photoUrl });
+            navigate("/");
+          })
+          .catch((error) => {
+            console.log(error);
+            setUser(user);
+          });
+
+        alert("register successfully");
+      })
+      .catch((error) => {
+        // const errorCode = error.code
+        const errorMessage = error.message;
+        console.log("errorMessage:", errorMessage);
+      });
   };
   return (
     <div className="flex justify-center items-center min-h-screen">

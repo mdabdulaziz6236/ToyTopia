@@ -1,59 +1,96 @@
-import React from "react";
+import React, { use } from "react";
 import MyContainer from "./MyContainer";
 import MyLink from "./MyLink";
 
+import { AuthContext } from "../Provider/AuthContext";
+import { Link } from "react-router";
+
 const Navbar = () => {
-  const links = <>
-  <li>
-    <MyLink to={'/'}>Home</MyLink>
-  </li>
-  <li>
-    <MyLink to={'/Login'}>Login</MyLink>
-  </li>
-  <li>
-    <MyLink to={'/register'}>Register</MyLink>
-  </li>
-  </>
+  const { user, logout } = use(AuthContext);
+  const links = (
+    <>
+      <li>
+        <MyLink to={"/"}>Home</MyLink>
+      </li>
+      <li>
+        <MyLink to={"/Login"}>Login</MyLink>
+      </li>
+      <li>
+        <MyLink to={"/register"}>Register</MyLink>
+      </li>
+      {user && (
+        <li>
+          <MyLink to={"/profile"}>Profile</MyLink>
+        </li>
+      )}
+    </>
+  );
+  const handleLogout = () => {
+    logout()
+      .then(() => {
+        alert("user Logged out");
+      })
+      .catch((error) => {
+        console.log("this is logged out error:", error);
+      });
+  };
   return (
     <div className="  bg-linear-to-t from-sky-500 to-indigo-500 hover:bg-green-500 shadow-sm">
-      <MyContainer className='navbar'>
-      <div className="navbar-start">
-        <div className="dropdown">
-          <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
+      <MyContainer className="navbar">
+        <div className="navbar-start">
+          <div className="dropdown">
+            <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-5 w-5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                {" "}
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M4 6h16M4 12h8m-8 6h16"
+                />{" "}
+              </svg>
+            </div>
+            <ul
+              tabIndex="-1"
+              className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
             >
-              {" "}
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M4 6h16M4 12h8m-8 6h16"
-              />{" "}
-            </svg>
+              {links}
+            </ul>
           </div>
-          <ul
-            tabIndex="-1"
-            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
-          >
-            {links}
-          </ul>
+          <a className="btn btn-ghost text-xl">daisyUI</a>
         </div>
-        <a className="btn btn-ghost text-xl">daisyUI</a>
-      </div>
-      <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1">
-          {links}
-        </ul>
-      </div>
-      <div className="navbar-end">
-        <a className="btn">Button</a>
-      </div>
-    </MyContainer>
+        <div className="navbar-center hidden lg:flex">
+          <ul className="menu menu-horizontal px-1">{links}</ul>
+        </div>
+        <div className="navbar-end">
+          <div className="flex gap-5">
+            {user ? (
+              <img
+                className="w-12 rounded-full"
+                src={user && user.photoURL}
+                alt=""
+              />
+            ) : (
+              ""
+            )}
+            {user ? (
+              <button onClick={handleLogout} className="btn btn-primary px-5">
+                Logout
+              </button>
+            ) : (
+              <Link to="/login" className="btn btn-primary px-5">
+                Login
+              </Link>
+            )}
+          </div>
+        </div>
+      </MyContainer>
     </div>
   );
 };
