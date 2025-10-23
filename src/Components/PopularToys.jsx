@@ -5,23 +5,6 @@ import useToys from "../Hooks/useToys";
 
 const PopularToys = () => {
   const {toys, loading}= useToys()
-  // const [toys, setToys] = useState([]);
-  // const [loading, setLoading] = useState(true);
-
-  // useEffect(() => {
-  //   // Fetch the toys JSON file from public folder
-  //   fetch("../../public/toy.json")
-  //     .then((res) => res.json())
-  //     .then((data) => {
-  //       setToys(data);
-  //       setLoading(false);
-  //     })
-  //     .catch((err) => {
-  //       console.error("Error fetching toys:", err);
-  //       setLoading(false);
-  //     });
-  // }, []);
-
   if (loading) {
     return <Loading></Loading>;
   }
@@ -31,7 +14,7 @@ const PopularToys = () => {
       {toys.map((toy) => (
         <div
           key={toy.toyId}
-          className="group relative p-3 bg-gradient-to-br from-base-200 to-base-300 rounded-2xl shadow-md hover:shadow-2xl transition-all duration-300 hover:-translate-y-1"
+          className="group relative p-3 bg-base-300 rounded-2xl shadow-md hover:shadow-2xl transition-all duration-300 hover:-translate-y-1"
         >
           <img
             src={toy.pictureURL}

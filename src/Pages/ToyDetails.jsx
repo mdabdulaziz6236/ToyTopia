@@ -1,13 +1,13 @@
-// src/Pages/ToyDetails.jsx
 import React, { useEffect, useState } from "react";
-import {  useParams } from "react-router";
+import { useParams } from "react-router";
 import Loading from "../Components/Loading";
 import useToys from "../Hooks/useToys";
+import { Star, DollarSign, User, Package } from "lucide-react"; // icons
 
 const ToyDetails = () => {
   const [toy, setToy] = useState(null);
   const [successMsg, setSuccessMsg] = useState("");
-  const {toys, loading} = useToys();
+  const { toys, loading } = useToys();
   const { id } = useParams();
 
   useEffect(() => {
@@ -22,91 +22,110 @@ const ToyDetails = () => {
     setTimeout(() => setSuccessMsg(""), 5000);
   };
 
- if(loading ){
-  return <Loading></Loading>
- }
+  if (loading) return <Loading />;
+
+  if (!toy)
+    return (
+      <p className="text-center text-red-600 text-xl font-semibold mt-20">
+        Toy not found 😢
+      </p>
+    );
+
   return (
-    <div className="max-w-5xl mx-auto my-12 p-8 bg-base-200 rounded-2xl shadow-xl">
-      {/* Toy Details Section */}
-      <div className="flex flex-col md:flex-row items-center gap-8">
+    <div className="w-11/12 mx-auto my-10">
+      {/* Hero Section */}
+      <div className="relative rounded-2xl overflow-hidden shadow-xl">
         <img
           src={toy.pictureURL}
           alt={toy.toyName}
-          className="w-full md:w-1/2 h-80 object-cover rounded-xl shadow-lg"
+          className="w-full h-[400px] object-cover brightness-75"
         />
-        <div className="space-y-3 md:w-1/2">
-          <h2 className="text-3xl font-bold text-primary">{toy.toyName}</h2>
-          <p className="text-lg text-gray-700">
-            <span className="font-semibold">Seller:</span> {toy.sellerName}
-          </p>
-          <p className="text-gray-700">
-            <span className="font-semibold">Email:</span> {toy.sellerEmail}
-          </p>
-
-          <div className="flex justify-between items-center py-2">
-            <p className="text-xl font-semibold text-green-600">
-              Price: ${toy.price}
-            </p>
-            <p className="text-yellow-500 font-semibold">
-              ⭐ Rating: {toy.rating}
-            </p>
-          </div>
-
-          <p className="text-gray-700">
-            <span className="font-semibold">Available Quantity:</span>{" "}
-            {toy.availableQuantity}
-          </p>
-          <p className="text-gray-700 leading-relaxed">
-            <span className="font-semibold">Description:</span> {toy.description}
-          </p>
-          <p className="text-gray-700">
-            <span className="font-semibold">Sub Category:</span>{" "}
-            {toy.subCategory}
+        <div className="absolute inset-0 bg-black/40 flex flex-col justify-center items-center text-white">
+          <h1 className="text-4xl md:text-5xl font-bold">{toy.toyName}</h1>
+          <p className="text-lg mt-2 text-gray-200">
+            {toy.subCategory || "No category specified"}
           </p>
         </div>
       </div>
 
-      {/* Try Now Form */}
-<div className="mt-10 flex flex-col  mx-auto bg-white p-6 rounded-xl shadow-md max-w-md">
-  <h3 className="text-2xl font-semibold mb-4 text-center text-primary">
-    Try This Toy Now
-  </h3>
+      {/* Toy Info Section */}
+      <div className="mt-10 grid md:grid-cols-2 gap-10 bg-base-200 p-8 rounded-2xl shadow-lg">
+        <div className="space-y-4 text-gray-700">
+          <h2 className="text-2xl font-bold text-primary mb-4">
+            Toy Information
+          </h2>
 
-  <form onSubmit={handleSubmit} className="space-y-1">
-    <fieldset className="fieldset flex flex-col items-center ">
-    
-      <input
-        type="text"
-        name="name"
-        placeholder="Enter Your Name"
-        className="input input-bordered w-3/4"
-        required
-      />
+          <p className="flex items-center gap-2">
+            <User className="text-blue-500" />
+            <span className="font-semibold">Seller:</span> {toy.sellerName}
+          </p>
 
-      
-      <input
-        type="email"
-        name="email"
-        placeholder="Enter Your Email"
-        className="input input-bordered w-3/4"
-        required
-      />
-    </fieldset>
+          <p className="flex items-center gap-2">
+            <i className="fa-solid fa-envelope text-green-600"></i>
+            <span className="font-semibold">Email:</span> {toy.sellerEmail}
+          </p>
 
-    <div className="flex justify-center">
-      <button type="submit" className="btn btn-primary w-1/2">
-        Try Now
-      </button>
-    </div>
-  </form>
+          <p className="flex items-center gap-2">
+            <DollarSign className="text-green-600" />
+            <span className="font-semibold">Price:</span> ${toy.price}
+          </p>
 
-  {successMsg && (
-    <p className="text-green-600 font-medium mt-4 text-center">
-      {successMsg}
-    </p>
-  )}
-</div>
+          <p className="flex items-center gap-2">
+            <Star className="text-yellow-500" />
+            <span className="font-semibold">Rating:</span> {toy.rating}
+          </p>
 
+          <p className="flex items-center gap-2">
+            <Package className="text-purple-500" />
+            <span className="font-semibold">Available Quantity:</span>{" "}
+            {toy.availableQuantity}
+          </p>
+
+          <p className="leading-relaxed">
+            <span className="font-semibold text-gray-800">Description:</span>{" "}
+            {toy.description}
+          </p>
+        </div>
+
+        {/* Try Now Form */}
+        <div className="bg-white rounded-2xl p-6 shadow-md hover:border-3 border-pink-500">
+          <h3 className="text-2xl font-semibold mb-4 text-center text-primary">
+            Try This Toy Now 🎲
+          </h3>
+
+          <form
+            onSubmit={handleSubmit}
+            className="flex flex-col items-center gap-4"
+          >
+            <input
+              type="text"
+              name="name"
+              placeholder="Enter Your Name"
+              className="input input-bordered w-3/4"
+              required
+            />
+            <input
+              type="email"
+              name="email"
+              placeholder="Enter Your Email"
+              className="input input-bordered w-3/4"
+              required
+            />
+            <button
+              type="submit"
+              className="btn btn-primary w-1/2 hover:scale-105 transition-transform"
+            >
+              Try Now
+            </button>
+          </form>
+
+          {successMsg && (
+            <div className="mt-4 p-3 bg-green-100 border border-green-300 text-green-700 rounded-lg text-center animate-fade-in">
+              {successMsg}
+            </div>
+          )}
+        </div>
+      </div>
     </div>
   );
 };

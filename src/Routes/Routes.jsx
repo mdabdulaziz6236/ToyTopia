@@ -7,7 +7,8 @@ import Home from "../Pages/Home";
 import Profile from "../Pages/Profile";
 import PrivetRouter from "../Provider/PrivetRouter";
 import ToyDetails from "../Pages/ToyDetails";
-import Loading from "../Components/Loading";
+
+import ForgetPassword from "../Pages/ForgetPassword";
 
 export const router = createBrowserRouter([
   {
@@ -26,6 +27,10 @@ export const router = createBrowserRouter([
       {
         path: "/login",
         element: <Login></Login>,
+      },
+      {
+        path: "/forgetPassword",
+        element: <ForgetPassword></ForgetPassword>,
       },
       {
         path: '/toyDetails/:id',

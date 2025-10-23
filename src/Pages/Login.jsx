@@ -4,13 +4,13 @@ import { AuthContext } from "../Provider/AuthContext";
 import { toast } from "react-toastify";
 
 const Login = () => {
-  const {login,setUser} = use(AuthContext)
-  const location = useLocation()
-  
-  const navigate = useNavigate()
-    const [passwordError, setPasswordError] = useState("");
-    const [emailError, setEmailError] = useState("");
-    const [error,setError] = useState('')
+  const { login, setUser, setUserLoading } = use(AuthContext);
+  const location = useLocation();
+
+  const navigate = useNavigate();
+  const [passwordError, setPasswordError] = useState("");
+  const [emailError, setEmailError] = useState("");
+  const [error, setError] = useState("");
   const handleLogIn = (e) => {
     e.preventDefault();
     const email = e.target.email.value;
@@ -35,18 +35,22 @@ const Login = () => {
 
       return;
     }
-    login(email,password)
-    .then(userCredential =>{
-        const user = userCredential.user
-        toast.success('user sign in' , user.displayName)
+    login(email, password)
+      .then((userCredential) => {
+        const user = userCredential.user;
+        toast.success(`"user sign in" ${user.displayName || ''}`);
         // alert('user sign in' , user.displayName)
-        setUser(user)
-        navigate( `${location.state? location.state : '/'}`) 
-    }).catch(error => {
-        // const errorCode = error.code 
-        const errorMessage = error.message
-        setError(errorMessage)
-    })
+        setUser(user);
+        navigate(`${location.state ? location.state : "/"}`);
+        setUserLoading(false);
+      })
+      .catch((error) => {
+  const errorMessage = error.code ? error.code.replace("auth/", "") : error.message;
+  setUserLoading(false);
+  setError(`Login failed: ${errorMessage}`);
+  toast.error(`Login failed: ${errorMessage}`);
+});
+
     console.log(email, password);
   };
   return (
@@ -85,7 +89,9 @@ const Login = () => {
             )}
 
             <div>
-              <a className="link link-hover">Forgot password?</a>
+              <Link to="/forgetPassword" className="link link-hover">
+                Forgot password?
+              </Link>
             </div>
             <button type="submit" className="btn btn-neutral mt-5">
               Login
@@ -100,9 +106,11 @@ const Login = () => {
               Register
             </Link>
           </p>
-          {error ? (
-            <p className="text-center text-secondary font-semibold">{error}</p>
-          ):""}
+          {error && (
+            <p className="text-center text-red-500 font-semibold mt-2">
+              {error}
+            </p>
+          )}
         </form>
       </div>
     </div>
