@@ -40,8 +40,9 @@ const Profile = () => {
   };
 
   return (
-    <div className="min-h-screen py-5 flex justify-center items-center bg-base-200">
-      <div className="card w-96 bg-base-100 shadow-2xl p-6 border">
+    <div className="min-h-screen bg-pink-300 py-5 flex justify-center items-center bg-base-200">
+      <title>Profile</title>
+      <div className="card w-96 bg-linear-to-t/hsl from-indigo-500 to-teal-400 shadow-2xl p-6 ">
         <div className="flex flex-col items-center space-y-4">
           {/* User Photo */}
           <img
@@ -94,7 +95,7 @@ const Profile = () => {
                     type="text"
                     className="input"
                     placeholder="Enter Your Name"
-                    required
+                    
                   />
                   {nameError && (
                     <p className="text-sm text-secondary text-center">
@@ -109,18 +110,18 @@ const Profile = () => {
                     type="text"
                     className="input"
                     placeholder="Enter Your Photo URL"
-                    required
+                    
                   />
-                  <button type="submit" className="btn btn-neutral mt-5">
+                  <button type="submit" className="btn hover:bg-indigo-500 hover:border-0 btn-neutral mt-5">
                     Update Profile
                   </button>
                 </fieldset>
               </form>
             </div>
-            {/* logout */}
+           {/*  logout */}
             <button
               onClick={handleLogout}
-              className="btn btn-outline btn-error w-full"
+              className="btn btn-secondary text-[16px] font-bold hover:bg-white hover:text-black hover:border-0 w-full"
             >
               Logout
             </button>

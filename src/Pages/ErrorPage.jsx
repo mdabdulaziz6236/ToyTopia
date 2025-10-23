@@ -4,6 +4,7 @@ import MyContainer from '../Components/MyContainer';
 const ErrorPage = () => {
     return (
         <div className='bg-gray-300'>
+            <title>Error page 404</title>
             <MyContainer className='flex flex-col justify-center items-center   min-h-screen
         '>
             <h2 className='font-extrabold text-red-500 text-5xl'>404</h2>

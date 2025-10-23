@@ -7,8 +7,8 @@ const MyLink = ({ children, className, to }) => {
       to={to}
       className={({ isActive }) =>
         isActive
-          ? "text-pink-500 btn-primary  underline font-bold"
-          : `${className} hover:bg-blue-500 font-bold  `
+          ? "text-pink-500 btn-primary  underline font-bold text-xl"
+          : `${className} hover:bg-purple-500 font-semibold text-xl `
       }
     >
       {children}

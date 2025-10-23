@@ -3,7 +3,8 @@ import PopularToys from "../Components/PopularToys";
 
 const Home = () => {
   return (
-    <div className="bg-base-100 min-h-screen">
+    <div className="bg-pink-300 min-h-screen">
+      <title>Home</title>
       {/* Slider Section */}
       <div className="w-11/12 mx-auto pt-5 lg:pt-10">
         <HomeSlider />

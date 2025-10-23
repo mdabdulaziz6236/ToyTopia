@@ -1,22 +1,21 @@
 import { Outlet } from "react-router";
 import Footer from "../Components/Footer";
 import Navbar from "../Components/Navbar";
-import { use } from "react";
-import { AuthContext } from "../Provider/AuthContext";
-import Loading from "../Components/Loading";
+// import { use } from "react";
+// import { AuthContext } from "../Provider/AuthContext";
+// import Loading from "../Components/Loading";
 
 const HomeLayout = () => {
-  const { userLoading } = use(AuthContext);
+  // const { userLoading } = use(AuthContext);
 
-  if (userLoading) {
-    return <Loading></Loading>;
-  }
+  // if (userLoading) {
+  //   return <Loading></Loading>;
+  // }
   return (
-    <div className="flex flex-col min-h-screen">
+    <div >
       <Navbar></Navbar>
-      <div className="flex-1">
-        <Outlet></Outlet>
-      </div>
+
+      <Outlet></Outlet>
       <Footer></Footer>
     </div>
   );

@@ -28,7 +28,7 @@ const HomeSlider = () => {
       >
         {toys.slice(0, 6).map((toy) => (
           <SwiperSlide key={toy.toyId}>
-            <div className="relative rounded-2xl overflow-hidden">
+            <div className="relative z-0 rounded-2xl overflow-hidden">
               <img
                 src={toy.pictureURL}
                 alt={toy.toyName}

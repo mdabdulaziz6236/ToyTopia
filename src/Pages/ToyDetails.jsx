@@ -32,7 +32,9 @@ const ToyDetails = () => {
     );
 
   return (
-    <div className="w-11/12 mx-auto my-10">
+   <div className="bg-pink-300">
+     <div className="w-11/12  mx-auto py-10 ">
+      <title>{toy.toyName}</title>
       {/* Hero Section */}
       <div className="relative rounded-2xl overflow-hidden shadow-xl">
         <img
@@ -49,8 +51,8 @@ const ToyDetails = () => {
       </div>
 
       {/* Toy Info Section */}
-      <div className="mt-10 grid md:grid-cols-2 gap-10 bg-base-200 p-8 rounded-2xl shadow-lg">
-        <div className="space-y-4 text-gray-700">
+      <div className="mt-10   grid md:grid-cols-3 gap-10 bg-base-200 p-8 rounded-2xl shadow-lg">
+        <div className="space-y-4 text-gray-700 md:col-span-2 lg:col-span-2 ">
           <h2 className="text-2xl font-bold text-primary mb-4">
             Toy Information
           </h2>
@@ -88,9 +90,9 @@ const ToyDetails = () => {
         </div>
 
         {/* Try Now Form */}
-        <div className="bg-white rounded-2xl p-6 shadow-md hover:border-3 border-pink-500">
+        <div className="bg-white  rounded-2xl p-6 shadow-md hover:border-3 border-pink-500">
           <h3 className="text-2xl font-semibold mb-4 text-center text-primary">
-            Try This Toy Now 🎲
+            Try This Toy Now 
           </h3>
 
           <form
@@ -127,6 +129,7 @@ const ToyDetails = () => {
         </div>
       </div>
     </div>
+   </div>
   );
 };
 

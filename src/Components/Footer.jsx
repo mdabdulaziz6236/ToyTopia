@@ -10,7 +10,7 @@ import { Link } from "react-router";
 
 const Footer = () => {
   return (
-    <footer className="bg-[#1A1A2E] pt-8 lg:pt-10">
+    <footer className="bg-linear-to-r/hsl from-indigo-500 to-teal-400 pt-8 lg:pt-10">
       <div className="w-11/12 mx-auto">
         {/* Top Section */}
         <div className="flex flex-col md:flex-row justify-between gap-8 md:gap-0">

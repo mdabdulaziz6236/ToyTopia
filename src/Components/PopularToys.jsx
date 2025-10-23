@@ -4,10 +4,8 @@ import Loading from "./Loading";
 import useToys from "../Hooks/useToys";
 
 const PopularToys = () => {
-  const {toys, loading}= useToys()
-  if (loading) {
-    return <Loading></Loading>;
-  }
+  const {toys}= useToys()
+  
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
