@@ -3,53 +3,51 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { Autoplay, Navigation, Pagination } from "swiper/modules";
+import useToys from "../Hooks/useToys";
+import Loading from "../Components/Loading";
 
 const HomeSlider = () => {
-  const slides = [
-    {
-      id: 1,
-      title: "Lego Fun!",
-      img: "https://i.ibb.co/9H4X8FxQ/kids-spelled-word-with-plastic-blocks-background.jpg",
-    },
-    {
-      id: 2,
-      title: "Doll Collection",
-      img: "https://i.ibb.co/DfJ079gT/close-up-adorable-amigurumi-duck.jpg",
-    },
-    {
-      id: 3,
-      title: "Puzzle Time",
-      img: "https://i.ibb.co/zHRbWN6w/images-1.jpg",
-    },
-  ];
+  const { toys, loading } = useToys();
+
+  if (loading) return <Loading />;
 
   return (
-    <Swiper
-      modules={[Navigation, Pagination, Autoplay]}
-      navigation
-      pagination={{ clickable: true }}
-      autoplay={{
-        delay: 5000, // slide stays 5 seconds
-        disableOnInteraction: false,
-      }}
-      speed={1500} // slow transition speed in ms
-      loop
-    >
-      {slides.map((slide) => (
-        <SwiperSlide key={slide.id}>
-          <div className="relative w-full h-[500px] rounded-2xl  shadow-lg">
-            <img
-              src={slide.img}
-              alt={slide.title}
-              className="w-full h-full object-cover transition-transform duration-500"
-            />
-            <h2 className="absolute bottom-5 left-5 text-2xl font-bold text-white drop-shadow-lg">
-              {slide.title}
-            </h2>
-          </div>
-        </SwiperSlide>
-      ))}
-    </Swiper>
+    <div className=" rounded-3xl overflow-hidden shadow-2xl">
+      <Swiper
+        modules={[Navigation, Pagination, Autoplay]}
+        
+        spaceBetween={10} 
+        loop={true}
+        autoplay={{
+          delay: 2500,
+          disableOnInteraction: false,
+        }}
+        speed={1200}
+        pagination={{ clickable: true }}
+        style={{ '--swiper-pagination-color': '#ec4899' }}
+      >
+        {toys.slice(0, 6).map((toy) => (
+          <SwiperSlide key={toy.toyId}>
+            <div className="relative rounded-2xl overflow-hidden">
+              <img
+                src={toy.pictureURL}
+                alt={toy.toyName}
+                className="w-full h-[400px] object-cover brightness-75 transition-transform duration-700 hover:scale-105"
+              />
+              {/* Gradient overlay */}
+              <div className="absolute inset-0 bg-black/30"></div>
+
+              {/* Text overlay */}
+              <div className="absolute bottom-6 left-6 max-w-lg text-white">
+                <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold drop-shadow-lg">
+                  {toy.toyName}
+                </h2>
+              </div>
+            </div>
+          </SwiperSlide>
+        ))}
+      </Swiper>
+    </div>
   );
 };
 

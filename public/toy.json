@@ -1,4 +1,3 @@
-
 [
   {
     "toyId": 1,
@@ -35,5 +34,41 @@
     "description": "Colorful and challenging puzzle sets to boost problem-solving skills and patience.",
     "pictureURL": "https://i.ibb.co.com/zHRbWN6w/images-1.jpg",
     "subCategory": "Puzzles"
+  },
+  {
+    "toyId": 4,
+    "toyName": "Remote Control Car",
+    "sellerName": "Speedy Toys",
+    "sellerEmail": "sales@speedytoys.com",
+    "price": 59.99,
+    "rating": 4.8,
+    "availableQuantity": 40,
+    "description": "High-speed remote control car with rechargeable battery and durable design for both indoor and outdoor play.",
+    "pictureURL": "https://i.ibb.co.com/X4Fj4nZ/remote-car.jpg",
+    "subCategory": "Vehicles"
+  },
+  {
+    "toyId": 5,
+    "toyName": "Soft Teddy Bear",
+    "sellerName": "Cuddle Corner",
+    "sellerEmail": "hello@cuddlecorner.com",
+    "price": 24.99,
+    "rating": 4.6,
+    "availableQuantity": 120,
+    "description": "Super soft and cuddly teddy bear made from premium materials. A perfect gift for kids and loved ones.",
+    "pictureURL": "https://i.ibb.co.com/y6hGdW5/teddy-bear.jpg",
+    "subCategory": "Stuffed Toys"
+  },
+  {
+    "toyId": 6,
+    "toyName": "Play Kitchen Set",
+    "sellerName": "MiniChef Toys",
+    "sellerEmail": "contact@minicheftoys.com",
+    "price": 69.99,
+    "rating": 4.9,
+    "availableQuantity": 30,
+    "description": "Interactive play kitchen set with utensils, stove, and pretend food items. Encourages imaginative cooking play.",
+    "pictureURL": "https://ibb.co.com/QjkJJmZg",
+    "subCategory": "Pretend Play"
   }
 ]
