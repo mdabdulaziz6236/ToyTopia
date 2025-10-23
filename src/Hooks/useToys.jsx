@@ -9,10 +9,11 @@ const useToys = () => {
 
   useEffect(() => {
     setLoading(true);
-    axios("/public/toy.json")
+    axios("./public/toy.json")
       .then((res) => {
         setTimeout(() => {
           setToys(res.data);
+         
           setLoading(false);
         }, 500);
       })

@@ -33,14 +33,14 @@ const ToyDetails = () => {
 
   return (
    <div className="bg-pink-300">
-     <div className="w-11/12  mx-auto py-10 ">
+     <div className="w-9/12  mx-auto py-10 ">
       <title>{toy.toyName}</title>
       {/* Hero Section */}
-      <div className="relative rounded-2xl overflow-hidden shadow-xl">
+      <div className="relative rounded-2xl w-full lg:w-[700px] mx-auto  overflow-hidden shadow-xl">
         <img
           src={toy.pictureURL}
           alt={toy.toyName}
-          className="w-full h-[400px] object-cover brightness-75"
+          className="w-full h-[400px] object-cover  brightness-75"
         />
         <div className="absolute inset-0 bg-black/40 flex flex-col justify-center items-center text-white">
           <h1 className="text-4xl md:text-5xl font-bold">{toy.toyName}</h1>
@@ -51,8 +51,8 @@ const ToyDetails = () => {
       </div>
 
       {/* Toy Info Section */}
-      <div className="mt-10   grid md:grid-cols-3 gap-10 bg-base-200 p-8 rounded-2xl shadow-lg">
-        <div className="space-y-4 text-gray-700 md:col-span-2 lg:col-span-2 ">
+      <div className="mt-10   grid md:grid-cols-2 gap-10 bg-base-200 p-8 rounded-2xl shadow-lg">
+        <div className="space-y-4 text-gray-700  ">
           <h2 className="text-2xl font-bold text-primary mb-4">
             Toy Information
           </h2>

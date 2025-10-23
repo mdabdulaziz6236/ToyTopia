@@ -40,7 +40,7 @@ const Profile = () => {
   };
 
   return (
-    <div className="min-h-screen bg-pink-300 py-5 flex justify-center items-center bg-base-200">
+    <div className="min-h-screen py-10 bg-pink-300  flex justify-center items-center ">
       <title>Profile</title>
       <div className="card w-96 bg-linear-to-t/hsl from-indigo-500 to-teal-400 shadow-2xl p-6 ">
         <div className="flex flex-col items-center space-y-4">

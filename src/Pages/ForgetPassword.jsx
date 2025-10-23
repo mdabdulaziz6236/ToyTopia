@@ -2,8 +2,7 @@ import { useState } from "react";
 import { getAuth, sendPasswordResetEmail } from "firebase/auth";
 import app from "../Firebase/Firebase.config";
 
-const auth = getAuth(app)
-console.log(auth)
+const auth = getAuth(app);
 
 const ForgetPassword = () => {
   const [email, setEmail] = useState(() => {
@@ -11,22 +10,16 @@ const ForgetPassword = () => {
   });
   const handleResetPassword = (e) => {
     e.preventDefault();
-    // Redirect to Gmail after clicking reset button
-    // window.location.href = "https://mail.google.com";
-    console.log(email)
     sendPasswordResetEmail(auth, email)
-  .then(() => {
-    // Password reset email sent!
-    // ..
-    console.log("go your email")
-  })
-  .catch((error) => {
-    
-    const errorMessage = error.message;
-    console.lgo(errorMessage)
-    // ..
-  });
-
+      .then(() => {
+        setEmail("");
+        e.target.reset();
+        window.location.href = "https://mail.google.com";
+      })
+      .catch((error) => {
+        const errorMessage = error.message;
+        console.log(errorMessage);
+      });
   };
 
   return (
@@ -41,7 +34,9 @@ const ForgetPassword = () => {
             className="input input-bordered w-full mb-3"
             placeholder="Enter your email"
             value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={(e) => {
+              setEmail(e.target.value);
+            }}
           />
 
           <button type="submit" className="btn btn-primary w-full">

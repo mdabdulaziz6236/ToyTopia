@@ -4,12 +4,13 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { Autoplay, Navigation, Pagination } from "swiper/modules";
 import useToys from "../Hooks/useToys";
+// import useToys from "../Hooks/useToys";
 import Loading from "../Components/Loading";
 
 const HomeSlider = () => {
   const { toys, loading } = useToys();
 
-  if (loading) return <Loading />;
+  if (loading) return <Loading></Loading>
 
   return (
     <div className=" rounded-3xl overflow-hidden shadow-2xl">

@@ -82,27 +82,43 @@ const Navbar = () => {
           <ul className="menu menu-horizontal px-1">{links}</ul>
         </div>
         <div className="navbar-end">
-          <div className="flex gap-5">
-            {user ? (
-              <img
-                className="w-12 rounded-full"
-                src={user.photoURL}
-                alt={user.displayName || "User"}
-                title={user.displayName || "User"} // <-- This shows the name on hover
-              />
-            ) : (
-              ""
-            )}
+          <div className="navbar-end">
+            <div className="flex gap-5 items-center">
+              {user ? (
+                <div
+                  className="tooltip tooltip-bottom border-0"
+                  data-tip={`${user.displayName || "User"} (${user.email})`}
+                >
+                  <div className="tooltip-content">
+                    <div
+                      className="py-3 px-4 text-white text-base rounded-lg
+                 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500
+                 shadow-lg border-0"
+                    >
+                      {`${user.displayName || "User"} (${user.email})`}
+                    </div>
+                  </div>
 
-            {user ? (
-              <Link onClick={handleLogout} className="btn btn-primary px-5">
-                Logout
-              </Link>
-            ) : (
-              <Link to="/login" className="btn btn-primary px-5">
-                Login
-              </Link>
-            )}
+                  <img
+                    className="w-12 h-12 rounded-full cursor-pointer "
+                    src={user.photoURL}
+                    alt={user.displayName || "User"}
+                  />
+                </div>
+              ) : (
+                <p></p>
+              )}
+
+              {user ? (
+                <Link onClick={handleLogout} className="btn btn-primary px-5">
+                  Logout
+                </Link>
+              ) : (
+                <Link to="/login" className="btn btn-primary px-5">
+                  Login
+                </Link>
+              )}
+            </div>
           </div>
         </div>
       </MyContainer>
