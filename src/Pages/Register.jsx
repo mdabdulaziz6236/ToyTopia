@@ -3,13 +3,14 @@ import React, { use, useState } from "react";
 import { AuthContext } from "../Provider/AuthContext";
 import { Link, useNavigate } from "react-router";
 import { toast } from "react-toastify";
+import Loading from "../Components/Loading";
 
 const Register = () => {
   const navigate = useNavigate();
   const [nameError, setNameError] = useState("");
   const [passwordError, setPasswordError] = useState("");
   const [emailError, setEmailError] = useState("");
-  const { createUser, setUser, updateUser } = use(AuthContext);
+  const { createUser, setUser, userLoader, updateUser } = use(AuthContext);
 
   const handleRegister = (event) => {
     event.preventDefault();
@@ -67,6 +68,9 @@ const Register = () => {
         console.log("errorMessage:", errorMessage);
       });
   };
+  if(userLoader  ){
+    return <Loading></Loading>
+  }
   return (
     <div className="flex justify-center items-center min-h-screen">
       <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">

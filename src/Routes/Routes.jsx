@@ -6,6 +6,8 @@ import ErrorPage from "../Pages/ErrorPage";
 import Home from "../Pages/Home";
 import Profile from "../Pages/Profile";
 import PrivetRouter from "../Provider/PrivetRouter";
+import ToyDetails from "../Pages/ToyDetails";
+import Loading from "../Components/Loading";
 
 export const router = createBrowserRouter([
   {
@@ -15,9 +17,7 @@ export const router = createBrowserRouter([
     children: [
       {
         path: "",
-        element: <PrivetRouter>
-          <Home></Home>
-        </PrivetRouter>
+        element: <Home></Home>
       },
       {
         path: "/register",
@@ -26,6 +26,14 @@ export const router = createBrowserRouter([
       {
         path: "/login",
         element: <Login></Login>,
+      },
+      {
+        path: '/toyDetails/:id',
+        element: <PrivetRouter>
+          <ToyDetails></ToyDetails>
+        </PrivetRouter>,
+        
+        
       },
       {
         path: "/profile",

@@ -9,11 +9,11 @@ const PrivetRouter = ({children}) => {
     if(userLoading){
         return <Loading></Loading>
     }
-    if(user&& user.email){
+    if(user){
 
         return children
     }else{
-        return <Navigate state={location.pathname} to='/'></Navigate>
+        return <Navigate state={location.pathname} to='/login'></Navigate>
     }
 };
 

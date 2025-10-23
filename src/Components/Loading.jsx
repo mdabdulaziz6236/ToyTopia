@@ -1,12 +1,26 @@
-import React from "react";
+import { GridLoader } from "react-spinners";
 
-const Loading = () => {
+
+
+
+const LoadingPage = () => {
   return (
-    <div className="flex flex-col justify-center items-center min-h-screen bg-base-200">
-      <span className="loading loading-spinner loading-lg text-primary"></span>
-      <p className="mt-4 text-lg font-semibold text-gray-600">Loading...</p>
+    <div className="w-screen mx-auto h-screen flex justify-center items-center">
+      <div className="flex flex-col items-center text-3xl lg:text-5xl font-extrabold">
+        
+        <div className="flex items-center">
+          <span>Loading</span>
+         
+        </div>
+          <div className="py-10">
+          
+            <GridLoader className="text-red-500" />
+          </div>
+
+        
+      </div>
     </div>
   );
 };
 
-export default Loading;
+export default LoadingPage;

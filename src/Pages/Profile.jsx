@@ -1,5 +1,6 @@
 import React, { use, useState } from "react";
 import { AuthContext } from "../Provider/AuthContext";
+import { toast } from "react-toastify";
 
 const Profile = () => {
   const [nameError, setNameError] = useState("");
@@ -30,6 +31,7 @@ const Profile = () => {
       .then(() => {
         setUser({ ...user, displayName: name, photoURL: photoUrl });
         event.target.reset();
+        toast.success("Profile updated")
       })
       .catch((error) => {
         console.log(error);
@@ -38,7 +40,7 @@ const Profile = () => {
   };
 
   return (
-    <div className="min-h-screen flex justify-center items-center bg-base-200">
+    <div className="min-h-screen py-5 flex justify-center items-center bg-base-200">
       <div className="card w-96 bg-base-100 shadow-2xl p-6 border">
         <div className="flex flex-col items-center space-y-4">
           {/* User Photo */}
