@@ -54,7 +54,7 @@ const Login = () => {
         // alert('user sign in' , user.displayName)
         setUser(user);
         // navigate(`${location.state ? location.state : "/"}`);
-        navigate(location.state || "/");
+        navigate(location?.state || "/");
         setUserLoading(false);
       })
       .catch((error) => {
@@ -70,14 +70,15 @@ const Login = () => {
 signInWithGoogle()
 .then(result => {
   const userGoogle = result.user 
-  console.log(userGoogle)
+  
   toast.success(`User Sign In ${userGoogle.displayName} `)
+ navigate(location?.state || "/");
 }).catch(error =>{
-  console.log(error)
+  toast.error(error)
 })
   }
   return (
-    <div className="flex bg-pink-300 justify-center items-center min-h-screen">
+    <div className="flex bg-pink-300  justify-center items-center min-h-screen">
       <title>Login</title>
       <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
         <h1 className="font-semibold text-3xl text-center mt-5">

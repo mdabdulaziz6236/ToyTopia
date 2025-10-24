@@ -3,13 +3,14 @@ import MyContainer from "./MyContainer";
 import MyLink from "./MyLink";
 
 import { AuthContext } from "../Provider/AuthContext";
-import { Link, useNavigate } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
 // import Loading from "./Loading";
 import { toast } from "react-toastify";
 
 const Navbar = () => {
   const navigate = useNavigate();
   const { user, logout } = use(AuthContext);
+  const location = useLocation();
   const links = (
     <>
       <li>
@@ -24,7 +25,8 @@ const Navbar = () => {
       {user && (
         <li>
           <MyLink to={"/profile"}>Profile</MyLink>
-        </li>)}
+        </li>
+      )}
       {user && (
         <li>
           <MyLink to={"/wishlist"}>WishList</MyLink>
@@ -35,14 +37,11 @@ const Navbar = () => {
   const handleLogout = () => {
     logout()
       .then(() => {
-        console.log("Logout successful, navigating...");
-        navigate("/");
+        navigate(location?.state || "/");
         toast.success("user Logged out");
-
-        // alert("user Logged out");
       })
       .catch((error) => {
-        console.log("this is logged out error:", error);
+        toast.error(error);
       });
   };
 

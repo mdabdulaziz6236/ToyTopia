@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { getAuth, sendPasswordResetEmail } from "firebase/auth";
 import app from "../Firebase/Firebase.config";
+import { toast } from "react-toastify";
 
 const auth = getAuth(app);
 
@@ -18,7 +19,7 @@ const ForgetPassword = () => {
       })
       .catch((error) => {
         const errorMessage = error.message;
-        console.log(errorMessage);
+        toast.error(errorMessage)
       });
   };
 

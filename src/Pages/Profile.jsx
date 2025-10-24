@@ -11,7 +11,7 @@ const Profile = () => {
         alert("user Logged out");
       })
       .catch((error) => {
-        console.log("this is logged out error:", error);
+        toast.error(error);
       });
   };
   const handleUpdateProfile = (event) => {
@@ -31,10 +31,10 @@ const Profile = () => {
       .then(() => {
         setUser({ ...user, displayName: name, photoURL: photoUrl });
         event.target.reset();
-        toast.success("Profile updated")
+        toast.success("Profile updated");
       })
       .catch((error) => {
-        console.log(error);
+        toast.error(error);
         setUser(user);
       });
   };
@@ -47,7 +47,6 @@ const Profile = () => {
           {/* User Photo */}
           <img
             src={user && user.photoURL}
-            
             className="w-24 h-24 rounded-full border-4 border-primary"
           />
 
@@ -73,7 +72,7 @@ const Profile = () => {
             </p>
             <p>
               <span className="font-semibold">Account Created:</span>{" "}
-              {user&& user.metadata?.creationTime}
+              {user && user.metadata?.creationTime}
             </p>
             <p>
               <span className="font-semibold">Last Sign-in:</span>{" "}
@@ -95,7 +94,6 @@ const Profile = () => {
                     type="text"
                     className="input"
                     placeholder="Enter Your Name"
-                    
                   />
                   {nameError && (
                     <p className="text-sm text-secondary text-center">
@@ -110,15 +108,17 @@ const Profile = () => {
                     type="text"
                     className="input"
                     placeholder="Enter Your Photo URL"
-                    
                   />
-                  <button type="submit" className="btn hover:bg-indigo-500 hover:border-0 btn-neutral mt-5">
+                  <button
+                    type="submit"
+                    className="btn hover:bg-indigo-500 hover:border-0 btn-neutral mt-5"
+                  >
                     Update Profile
                   </button>
                 </fieldset>
               </form>
             </div>
-           {/*  logout */}
+            {/*  logout */}
             <button
               onClick={handleLogout}
               className="btn btn-secondary text-[16px] font-bold hover:bg-white hover:text-black hover:border-0 w-full"

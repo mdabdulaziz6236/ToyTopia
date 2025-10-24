@@ -40,7 +40,7 @@ const AuthProvider = ({ children }) => {
       setUserLoading(false);
     });
 
-    return () => unsubscribe(); // cleanup
+    return () => unsubscribe(); 
   }, []);
   const authData = {
     createUser,
