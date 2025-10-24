@@ -31,7 +31,7 @@ const HomeSlider = () => {
               <img
                 src={toy.pictureURL}
                 alt={toy.toyName}
-                className="w-full h-[400px] object-cover brightness-75 transition-transform duration-700 hover:scale-105"
+                className="w-full h-[300px] lg:h-[400px] object-cover brightness-75 transition-transform duration-700 hover:scale-105"
               />
               {/* Gradient overlay */}
               <div className="absolute inset-0 bg-black/30"></div>

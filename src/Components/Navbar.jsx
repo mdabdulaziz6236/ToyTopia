@@ -16,12 +16,16 @@ const Navbar = () => {
       <li>
         <MyLink to={"/"}>Home</MyLink>
       </li>
-      <li>
-        <MyLink to={"/Login"}>Login</MyLink>
-      </li>
-      <li>
-        <MyLink to={"/register"}>Register</MyLink>
-      </li>
+      {!user && (
+        <li>
+          <MyLink to={"/Login"}>Login</MyLink>
+        </li>
+      )}
+      {!user && (
+        <li>
+          <MyLink to={"/register"}>Register</MyLink>
+        </li>
+      )}
       {user && (
         <li>
           <MyLink to={"/profile"}>Profile</MyLink>
@@ -85,43 +89,41 @@ const Navbar = () => {
           <ul className="menu menu-horizontal px-1">{links}</ul>
         </div>
         <div className="navbar-end">
-          <div className="navbar-end">
-            <div className="flex gap-5 items-center">
-              {user ? (
-                <div
-                  className="tooltip tooltip-bottom border-0"
-                  data-tip={`${user.displayName || "User"} (${user.email})`}
-                >
-                  <div className="tooltip-content">
-                    <div
-                      className="py-3 px-4 text-white text-base rounded-lg
+          <div className="flex gap-5 items-center">
+            {user ? (
+              <div
+                className="tooltip tooltip-bottom border-0"
+                data-tip={`${user.displayName || "User"} (${user.email})`}
+              >
+                <div className="tooltip-content">
+                  <div
+                    className="py-3 px-4 text-white text-base rounded-lg
                  bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500
                  shadow-lg border-0"
-                    >
-                      {`${user.displayName || "User"} (${user.email})`}
-                    </div>
+                  >
+                    {`${user.displayName || "User"} (${user.email})`}
                   </div>
-
-                  <img
-                    className="w-12 h-12 border border-gray-500 bg-blue-300 rounded-full cursor-pointer "
-                    src={user.photoURL}
-                    alt={user.displayName || "User"}
-                  />
                 </div>
-              ) : (
-                <p></p>
-              )}
 
-              {user ? (
-                <Link onClick={handleLogout} className="btn btn-primary px-5">
-                  Logout
-                </Link>
-              ) : (
-                <Link to="/login" className="btn btn-primary px-5">
-                  Login
-                </Link>
-              )}
-            </div>
+                <img
+                  className="w-12 h-12 border border-gray-500 bg-blue-300 rounded-full cursor-pointer "
+                  src={user.photoURL}
+                  alt={user.displayName || "User"}
+                />
+              </div>
+            ) : (
+              <p></p>
+            )}
+
+            {user ? (
+              <Link onClick={handleLogout} className="btn btn-primary px-5">
+                Logout
+              </Link>
+            ) : (
+              <Link to="/login" className="btn btn-primary px-5">
+                Login
+              </Link>
+            )}
           </div>
         </div>
       </MyContainer>

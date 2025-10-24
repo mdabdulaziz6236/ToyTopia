@@ -1,4 +1,5 @@
-import React from "react";
+import React, { use } from "react";
+import { AuthContext } from "../Provider/AuthContext";
 
 import {
   FaFacebookSquare,
@@ -7,8 +8,10 @@ import {
   FaLinkedin,
 } from "react-icons/fa";
 import { Link } from "react-router";
-
+import { toast } from "react-toastify";
 const Footer = () => {
+  const { user } = use(AuthContext);
+
   return (
     <footer className="bg-linear-to-r/hsl from-indigo-500 to-teal-400 pt-8 lg:pt-10">
       <div className="w-11/12 mx-auto">
@@ -34,9 +37,26 @@ const Footer = () => {
                 <Link to="/">Home</Link>
               </li>
 
-              <li className="mb-2 hover:text-purple-400">
-                <Link to="/login">Login</Link>
-              </li>
+              {!user && (
+                <li className="mb-2 hover:text-purple-400">
+                  <Link to="/login">Login</Link>
+                </li>
+              )}
+              {!user && (
+                <li className="mb-2 hover:text-purple-400">
+                  <Link to="/Register">Register</Link>
+                </li>
+              )}
+              {user && (
+                <li className="mb-2 hover:text-purple-400">
+                  <Link to="/profile">Profile</Link>
+                </li>
+              )}
+              {user && (
+                <li className="mb-2 hover:text-purple-400">
+                  <Link to="/wishlist">WishList</Link>
+                </li>
+              )}
               <li className="mb-2 hover:text-purple-400">
                 <Link>Contact</Link>
               </li>
@@ -73,7 +93,12 @@ const Footer = () => {
                 placeholder="Enter your email"
                 className="p-2 rounded-l-md bg-gray-300 text-black w-full"
               />
-              <button className="bg-purple-600 hover:bg-purple-800 p-2 rounded-r-md font-semibold">
+              <button
+                onClick={() => {
+                  toast.success("Subscribed Successfully.");
+                }}
+                className="bg-purple-600 hover:bg-purple-800 p-2 rounded-r-md font-semibold"
+              >
                 Subscribe
               </button>
             </div>

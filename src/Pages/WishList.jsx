@@ -26,13 +26,13 @@ const Wishlist = () => {
 
   if (wishlistToys.length === 0)
     return (
-      <div className="text-center min-h-screen text-3xl bg-pink-300 flex justify-center items-center py-20  ">
+      <div className="text-center min-h-screen text-3xl lg:text-5xl bg-gradient-to-r from-green-200 via-emerald-200 to-teal-200 flex justify-center items-center py-20  ">
         🛒 Your wishlist is empty!
       </div>
     );
 
   return (
-    <div className="bg-pink-300">
+    <div className="bg-gradient-to-r from-green-200 via-emerald-200 to-teal-200">
         <div className="w-11/12  flex justify-center flex-col min-h-screen items-center mx-auto py-10">
       <div className="">
         <div className="w-full">
