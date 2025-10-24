@@ -13,6 +13,13 @@ const ToyDetails = () => {
   const { id } = useParams();
 
   useEffect(() => {
+    if (!toy) return;
+    const storedIds = JSON.parse(localStorage.getItem("wishlistIds")) || [];
+    if (storedIds.includes(toy.toyId)) {
+      setIsInWishlist(true);
+    }
+  }, [toy]);
+  useEffect(() => {
     const toyDetails = toys.find((singleToy) => singleToy.toyId == id);
     setToy(toyDetails);
   }, [toys, id]);
@@ -23,18 +30,16 @@ const ToyDetails = () => {
     e.target.reset();
     setTimeout(() => setSuccessMsg(""), 5000);
   };
-   const handleAddToWishlist = () => {
+  const handleAddToWishlist = () => {
     if (!toy) return;
 
     const storedIds = JSON.parse(localStorage.getItem("wishlistIds")) || [];
 
- 
     if (storedIds.includes(toy.toyId)) return;
-
 
     storedIds.push(toy.toyId);
     localStorage.setItem("wishlistIds", JSON.stringify(storedIds));
-    toast.success("Toy added to Wishlist")
+    toast.success("Toy added to Wishlist");
 
     setIsInWishlist(true); // ✅ Button disable
   };
@@ -48,7 +53,7 @@ const ToyDetails = () => {
     );
 
   return (
-    <div className="bg-gradient-to-r from-green-200 via-emerald-200 to-teal-200">
+    <div className="bg-white">
       <div className="w-9/12  mx-auto py-10 ">
         <title>{toy.toyName}</title>
         {/* Hero Section */}
@@ -59,7 +64,7 @@ const ToyDetails = () => {
             className="w-full h-[400px] object-cover  brightness-75"
           />
           <div className="absolute inset-0 bg-black/40 flex flex-col justify-center items-center text-white">
-            <h1 className="text-4xl md:text-5xl font-bold">{toy.toyName}</h1>
+            <h1 className="text-xl lg:text-4xl md:text-5xl font-bold">{toy.toyName}</h1>
             <p className="text-lg mt-2 text-gray-200">
               {toy.subCategory || "No category specified"}
             </p>
@@ -145,15 +150,18 @@ const ToyDetails = () => {
           </div>
           <div className="lg:flex lg:justify-center lg:items-center">
             <button
-            disabled={isInWishlist}
-          onClick={handleAddToWishlist}
-          className="btn lg:w-1/2 w-full  hover:btn-secondary btn-primary hover:scale-105 transition-transform"
-        >
-           Add to Wishlist
-        </button>
+              disabled={isInWishlist}
+              onClick={handleAddToWishlist}
+              className={`btn lg:w-1/2 w-full ${
+                isInWishlist
+                  ? "!bg-gray-300 !text-black !hover:bg-gray-700"
+                  : "btn-primary"
+              } hover:btn-secondary hover:scale-105 transition-transform`}
+            >
+              Add to Wishlist
+            </button>
           </div>
         </div>
-        
       </div>
     </div>
   );

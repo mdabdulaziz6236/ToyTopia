@@ -4,7 +4,8 @@ import { Link } from "react-router";
 
 const ErrorPage = () => {
   return (
-    <div className="flex flex-col items-center justify-center h-screen bg-gradient-to-r from-green-300 via-emerald-300 to-teal-300 text-gray-800">
+    <div className="flex flex-col items-center justify-center h-screen bg-white text-gray-800">
+      <title>Error page</title>
       <h1 className="text-9xl font-extrabold text-pink-500 drop-shadow-lg">404</h1>
       <h2 className="text-3xl font-bold mt-4">Oops! Page Not Found</h2>
       

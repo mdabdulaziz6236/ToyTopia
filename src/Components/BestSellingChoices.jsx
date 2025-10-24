@@ -6,11 +6,11 @@ const BestSellingChoices = () => {
   const { toys } = useToys();
 
   // Sort toys by rating descending and pick top 6
-  const bestToys = [...toys].sort((a, b) => b.rating - a.rating).slice(0, 6);
+  const bestToys = [...toys].sort((a, b) => b.rating - a.rating).slice(0, 3);
 
   return (
     <div className="py-10">
-      <h1 className="font-bold  text-blue-500 sm:text-5xl md:text-6xl text-7xl text-center mb-2">
+      <h1 className="font-bold text-3xl  text-blue-500 sm:text-5xl md:text-6xl lg:text-7xl text-center mb-2">
         Our Products
       </h1>
       <h2 className="text-xl text-pink-500 sm:text-2xl md:text-3xl font-semibold text-center mb-8">

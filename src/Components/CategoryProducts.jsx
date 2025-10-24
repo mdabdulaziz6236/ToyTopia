@@ -40,7 +40,7 @@ const CategoryProducts = () => {
 
   return (
     <div className="py-10 px-5">
-      <h1 className="font-bold  text-pink-500 sm:text-5xl md:text-6xl text-7xl text-center mb-2">
+      <h1 className="font-bold  text-pink-500 sm:text-5xl md:text-6xl text-3xl lg:text-7xl text-center mb-2">
         Our Products
       </h1>
       <h2 className="text-xl text-blue-500 sm:text-2xl md:text-3xl font-semibold text-center mb-8">

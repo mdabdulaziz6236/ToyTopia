@@ -87,7 +87,7 @@ const Register = () => {
   };
 
   return (
-    <div className="flex bg-gradient-to-r from-green-200 via-emerald-200 to-teal-200 justify-center items-center min-h-screen">
+    <div className="flex bg-white justify-center items-center min-h-screen">
       <title>Register</title>
       <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
         <h1 className="font-semibold text-3xl text-center mt-5">
