@@ -14,6 +14,7 @@ ToyTopia is an online marketplace designed for kids' toys. It allows families to
 - Browse and search for toys with detailed information
 - Add toys to wishlist (stored in local storage)
 - Interactive ratings and reviews for toys
+- Interactive Google fonts inter,
 - Responsive and vibrant UI using Tailwind CSS and DaisyUI
 - SwiperJS carousel for showcasing featured toys
 - Toast notifications for user actions (success/error messages)

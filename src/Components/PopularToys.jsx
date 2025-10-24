@@ -12,7 +12,7 @@ const PopularToys = () => {
       {toys.map((toy) => (
         <div
           key={toy.toyId}
-          className="group relative p-3 bg-base-300 rounded-2xl shadow-md hover:shadow-2xl transition-all duration-300 hover:-translate-y-1"
+          className="group  relative p-3 bg-base-300 rounded-2xl shadow-md hover:shadow-2xl transition-all duration-300 hover:-translate-y-1"
         >
           <img
             src={toy.pictureURL}

@@ -44,7 +44,7 @@ const Wishlist = () => {
             {wishlistToys.map((toy) => (
               <div
                 key={toy.toyId}
-                className="bg-white shadow-lg rounded-xl p-4 flex flex-col items-center hover:scale-105 transition"
+                className="bg-white shadow-lg min-w-[250px] rounded-xl p-4 flex flex-col items-center hover:scale-105 transition"
               >
                 <img
                   src={toy.pictureURL}

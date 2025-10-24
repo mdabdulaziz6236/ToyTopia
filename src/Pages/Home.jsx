@@ -1,5 +1,9 @@
+import BestSellingChoices from "../Components/BestSellingChoices";
+import CategoryProducts from "../Components/CategoryProducts";
 import HomeSlider from "../Components/HomeSlider";
+
 import PopularToys from "../Components/PopularToys";
+
 
 const Home = () => {
   return (
@@ -14,6 +18,12 @@ const Home = () => {
       <div className="py-10 w-10/12 mx-auto">
         <PopularToys />
       </div>
+   <div className="w-8/12 mx-auto">
+    <CategoryProducts></CategoryProducts>
+   </div>
+   <div className="w-8/12 mx-auto">
+    <BestSellingChoices></BestSellingChoices>
+   </div>
     </div>
   );
 };
