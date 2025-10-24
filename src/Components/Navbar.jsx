@@ -4,7 +4,7 @@ import MyLink from "./MyLink";
 
 import { AuthContext } from "../Provider/AuthContext";
 import { Link, useNavigate } from "react-router";
-import Loading from "./Loading";
+// import Loading from "./Loading";
 import { toast } from "react-toastify";
 
 const Navbar = () => {
@@ -24,6 +24,10 @@ const Navbar = () => {
       {user && (
         <li>
           <MyLink to={"/profile"}>Profile</MyLink>
+        </li>)}
+      {user && (
+        <li>
+          <MyLink to={"/wishlist"}>WishList</MyLink>
         </li>
       )}
     </>
@@ -43,7 +47,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className=" bg-gradient-to-r from-indigo-500 to-teal-400 drop-shadow-lg sticky top-0 z-50">
+    <div className=" bg-white drop-shadow-lg sticky top-0 z-50">
       <MyContainer className="navbar">
         <div className="navbar-start">
           <div className="dropdown z-50">
@@ -100,7 +104,7 @@ const Navbar = () => {
                   </div>
 
                   <img
-                    className="w-12 h-12 rounded-full cursor-pointer "
+                    className="w-12 h-12 border border-gray-500 bg-blue-300 rounded-full cursor-pointer "
                     src={user.photoURL}
                     alt={user.displayName || "User"}
                   />

@@ -4,20 +4,18 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { Autoplay, Navigation, Pagination } from "swiper/modules";
 import useToys from "../Hooks/useToys";
-// import useToys from "../Hooks/useToys";
 import Loading from "../Components/Loading";
 
 const HomeSlider = () => {
   const { toys, loading } = useToys();
 
-  if (loading) return <Loading></Loading>
+  if (loading) return <Loading></Loading>;
 
   return (
     <div className=" rounded-3xl overflow-hidden shadow-2xl">
       <Swiper
         modules={[Navigation, Pagination, Autoplay]}
-        
-        spaceBetween={10} 
+        spaceBetween={10}
         loop={true}
         autoplay={{
           delay: 2500,
@@ -25,9 +23,9 @@ const HomeSlider = () => {
         }}
         speed={1200}
         pagination={{ clickable: true }}
-        style={{ '--swiper-pagination-color': '#ec4899' }}
+        style={{ "--swiper-pagination-color": "#ec4899" }}
       >
-        {toys.slice(0, 6).map((toy) => (
+        {toys.map((toy) => (
           <SwiperSlide key={toy.toyId}>
             <div className="relative z-0 rounded-2xl overflow-hidden">
               <img

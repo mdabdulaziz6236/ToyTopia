@@ -1,4 +1,3 @@
-// import axios from "axios";
 import axios from "axios";
 import { useEffect, useState } from "react";
 
@@ -9,11 +8,10 @@ const useToys = () => {
 
   useEffect(() => {
     setLoading(true);
-    axios("./public/toy.json")
+    axios("/toy.json")
       .then((res) => {
         setTimeout(() => {
           setToys(res.data);
-         
           setLoading(false);
         }, 500);
       })

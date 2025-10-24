@@ -9,6 +9,7 @@ import PrivetRouter from "../Provider/PrivetRouter";
 import ToyDetails from "../Pages/ToyDetails";
 
 import ForgetPassword from "../Pages/ForgetPassword";
+import WishList from "../Pages/WishList";
 
 export const router = createBrowserRouter([
   {
@@ -44,6 +45,12 @@ export const router = createBrowserRouter([
         path: "/profile",
         element: <PrivetRouter>
           <Profile></Profile>
+        </PrivetRouter>,
+      },
+      {
+        path: "/wishlist",
+        element: <PrivetRouter>
+          <WishList></WishList>
         </PrivetRouter>,
       },
     ],
