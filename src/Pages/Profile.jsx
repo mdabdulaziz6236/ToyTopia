@@ -46,6 +46,7 @@ const Profile = () => {
 
   return (
     <div className="min-h-screen relative flex items-center justify-center overflow-hidden bg-linear-to-br from-purple-50 via-white to-pink-50 py-10">
+      <title>Profile</title>
       <div className="absolute top-[-10%] left-[-10%] w-96 h-96 bg-pink-400 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
       <div className="absolute bottom-[-10%] right-[-10%] w-96 h-96 bg-purple-400 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000"></div>
       <div className="relative z-10 w-full max-w-2xl bg-white/60 backdrop-blur-xl border border-white/50 shadow-2xl rounded-3xl overflow-hidden p-8 md:p-12">

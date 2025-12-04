@@ -78,10 +78,10 @@ const Navbar = () => {
               {links}
             </ul>
           </div>
-          <div className="">
+          <div className="pr-3">
             <img
-              src="https://img.icons8.com/?size=160&id=gyi0Z15iYtQP&format=png"
-              className="w-12 h-12"
+              src="https://img.icons8.com/?size=100&id=CKfSpNCJfuKL&format=png"
+              className="md:w-12 w-10 h-10 md:h-12"
               alt=""
             />
           </div>

@@ -5,8 +5,6 @@ import { Link } from "react-router";
 const FAQ = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [openIndex, setOpenIndex] = useState(null);
-
-  // FAQ Data (আপনার প্রয়োজন মতো পরিবর্তন করতে পারেন)
   const faqs = [
     {
       id: 1,
@@ -64,6 +62,7 @@ const FAQ = () => {
 
   return (
     <div className="min-h-screen bg-gray-50 py-12 px-4 md:px-8">
+      <title>FAQ</title>
       <div className="max-w-4xl mx-auto">
         {/* Header Section */}
         <div className="text-center mb-12 space-y-4">

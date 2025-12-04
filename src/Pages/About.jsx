@@ -4,6 +4,7 @@ import { Award, Users, Heart, Gift } from "lucide-react";
 const About = () => {
   return (
     <div className="bg-gray-50 max-w-11/12 mx-auto min-h-screen font-sans">
+      <title>About Us</title>
       {/* Hero Section */}
       <div className="relative bg-linear-to-r from-pink-400 to-purple-600 text-white py-20 px-5 text-center">
         <h1 className="text-4xl md:text-6xl font-bold mb-4">
