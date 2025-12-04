@@ -8,7 +8,7 @@ const useToys = () => {
 
   useEffect(() => {
     setLoading(true);
-    axios("/toy.json")
+    axios("/toys.json")
       .then((res) => {
         setTimeout(() => {
           setToys(res.data);
