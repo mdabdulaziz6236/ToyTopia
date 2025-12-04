@@ -10,6 +10,10 @@ import ToyDetails from "../Pages/ToyDetails";
 
 import ForgetPassword from "../Pages/ForgetPassword";
 import WishList from "../Pages/WishList";
+import AllToys from "../Pages/AllToys";
+import About from "../Pages/About";
+import Contact from "../Pages/Contact";
+import FAQ from "../Pages/Faq";
 
 export const router = createBrowserRouter([
   {
@@ -19,7 +23,7 @@ export const router = createBrowserRouter([
     children: [
       {
         path: "",
-        element: <Home></Home>
+        element: <Home></Home>,
       },
       {
         path: "/register",
@@ -34,24 +38,40 @@ export const router = createBrowserRouter([
         element: <ForgetPassword></ForgetPassword>,
       },
       {
-        path: '/toyDetails/:id',
-        element: <PrivetRouter>
-          <ToyDetails></ToyDetails>
-        </PrivetRouter>,
-        
-        
+        path: "/toyDetails/:id",
+        element: <ToyDetails></ToyDetails>,
+      },
+      {
+        path: "/all-items",
+        element: <AllToys></AllToys>
+      },
+      {
+        path: "/about-us",
+        element: <About></About>
+      },
+      {
+        path: "/faq",
+        element: <FAQ></FAQ>
+      },
+      {
+        path: "/contact",
+        element: <Contact></Contact>
       },
       {
         path: "/profile",
-        element: <PrivetRouter>
-          <Profile></Profile>
-        </PrivetRouter>,
+        element: (
+          <PrivetRouter>
+            <Profile></Profile>
+          </PrivetRouter>
+        ),
       },
       {
         path: "/wishlist",
-        element: <PrivetRouter>
-          <WishList></WishList>
-        </PrivetRouter>,
+        element: (
+          <PrivetRouter>
+            <WishList></WishList>
+          </PrivetRouter>
+        ),
       },
     ],
   },

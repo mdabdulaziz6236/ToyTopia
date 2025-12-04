@@ -19,36 +19,44 @@ const BestSellingChoices = () => {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6">
         {bestToys.map((toy) => (
-          <div
-            key={toy.toyId}
-            className="bg-white rounded-xl shadow-lg overflow-hidden hover:scale-105 transition-transform duration-300"
-          >
-            <img
-              src={toy.pictureURL}
-              alt={toy.toyName}
-              className="h-48 w-full object-cover"
-            />
-            <div className="p-3 flex justify-between items-center">
-             <div>
-               <h3 className="text-lg font-semibold ">{toy.toyName}</h3>
-              <p className="text-yellow-500 font-bold ">⭐ {toy.rating}</p>
-             </div>
-              <div>
-                <p className="text-gray-700 font-semibold">${toy.price}</p>
-              <p className="text-gray-500 text-sm mt-1">
-                {toy.availableQuantity} Available
-              </p>
-              </div>
-              
-            </div>
-            <div className="flex justify-center items-center pb-4">
-              <Link to={`/toyDetails/${toy.toyId}`}>
-              <button className="btn btn-sm bg-pink-500 hover:bg-pink-600 text-white font-semibold rounded-xl shadow-md hover:shadow-lg transition-all duration-300">
+        <div
+          key={toy.toyId}
+          className="group  relative p-3 bg-base-300 rounded-2xl shadow-md hover:shadow-2xl transition-all duration-300 hover:-translate-y-1"
+        >
+          <img
+            src={toy.pictureURL}
+            alt={toy.toyName}
+            className="h-48 w-full object-cover rounded-xl"
+          />
+
+          <h3 className=" text-xl lg:text-2xl font-bold mt-4 text-gray-800 group-hover:text-pink-600 transition-colors">
+            {toy.toyName}
+          </h3>
+
+          <div className="flex justify-between items-center py-3 text-gray-700">
+            <p className="font-semibold">
+              Price: <span className="text-pink-600">${toy.price}</span>
+            </p>
+
+            <p className="text-sm font-medium">
+              Available: {toy.availableQuantity}
+            </p>
+          </div>
+
+          <div className="flex justify-between items-center text-gray-600">
+            <p className="flex items-center gap-1 font-medium">
+              {toy.rating} ⭐
+            </p>
+            <Link to={`/toyDetails/${toy.toyId}`}>
+              <button className="btn btn-sm hover:bg-purple-500 bg-pink-500  text-white font-semibold rounded-xl shadow-md hover:shadow-lg transition-all duration-300">
                 View More
               </button>
             </Link>
-            </div>
           </div>
+
+          {/* decoration effect */}
+          <div className="absolute inset-0 rounded-2xl border border-transparent  transition-all duration-300 pointer-events-none"></div>
+        </div>
         ))}
       </div>
     </div>

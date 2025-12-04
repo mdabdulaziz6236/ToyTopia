@@ -72,15 +72,18 @@ const Footer = () => {
               Social Links
             </h2>
             <div className="flex items-center gap-3 text-3xl lg:text-4xl">
-              <FaFacebookSquare className="hover:text-blue-600 cursor-pointer" />
-              <FaInstagramSquare className="hover:text-pink-500 cursor-pointer" />
-              <FaTwitterSquare className="hover:text-blue-400 cursor-pointer" />
-              <FaLinkedin className="hover:text-blue-700 cursor-pointer" />
+              <FaFacebookSquare className="text-blue-900 hover:text-pink-500 cursor-pointer" />
+              <FaInstagramSquare className="text-blue-900 hover:text-pink-500 cursor-pointer" />
+              <FaTwitterSquare className="text-blue-900 hover:text-pink-500 cursor-pointer" />
+              <Link  to={'https://www.linkedin.com/in/abdul-aziz-developer/'}>
+              <FaLinkedin className="text-blue-900 hover:text-pink-500 cursor-pointer" />
+              
+              </Link>
             </div>
           </div>
 
           {/* Newsletter */}
-          <div className="text-white md:w-1/4">
+          <div className="text-pink-500 md:w-1/4">
             <h2 className="text-lg lg:text-[18px] font-semibold mb-3">
               Kids Toy Store
             </h2>
@@ -97,7 +100,7 @@ const Footer = () => {
                 onClick={() => {
                   toast.success("Subscribed Successfully.");
                 }}
-                className="bg-purple-600 hover:bg-purple-800 p-2 rounded-r-md font-semibold"
+                className="bg-purple-600 text-black hover:bg-purple-800 p-2 rounded-r-md font-semibold"
               >
                 Subscribe
               </button>

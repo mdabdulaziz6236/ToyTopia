@@ -1,41 +1,41 @@
-import React, { use } from "react";
+import React, { use, useState } from "react";
 import MyContainer from "./MyContainer";
 import MyLink from "./MyLink";
 
 import { AuthContext } from "../Provider/AuthContext";
 import { Link, useLocation, useNavigate } from "react-router";
-// import Loading from "./Loading";
 import { toast } from "react-toastify";
+import { User } from "lucide-react";
 
 const Navbar = () => {
   const navigate = useNavigate();
   const { user, logout } = use(AuthContext);
   const location = useLocation();
+  const [dropdownOpen, setDropdownOpen] = useState(false);
   const links = (
     <>
       <li>
         <MyLink to={"/"}>Home</MyLink>
       </li>
-      {!user && (
-        <li>
-          <MyLink to={"/Login"}>Login</MyLink>
-        </li>
-      )}
-      {!user && (
-        <li>
-          <MyLink to={"/register"}>Register</MyLink>
-        </li>
-      )}
-      {user && (
-        <li>
-          <MyLink to={"/profile"}>Profile</MyLink>
-        </li>
-      )}
+      <li>
+        <MyLink to={"/all-items"}>All Toys</MyLink>
+      </li>
       {user && (
         <li>
           <MyLink to={"/wishlist"}>WishList</MyLink>
         </li>
       )}
+
+
+      <li>
+        <MyLink to={"/about-us"}>About Us</MyLink>
+      </li>
+      <li>
+        <MyLink to={"/contact"}>Contact</MyLink>
+      </li>
+      <li>
+        <MyLink to={"/faq"}>FAQ</MyLink>
+      </li>
     </>
   );
   const handleLogout = () => {
@@ -78,9 +78,16 @@ const Navbar = () => {
               {links}
             </ul>
           </div>
+          <div className="">
+            <img
+              src="https://img.icons8.com/?size=160&id=gyi0Z15iYtQP&format=png"
+              className="w-12 h-12"
+              alt=""
+            />
+          </div>
           <Link
             to="/"
-            className=" text-2xl hover:text-shadow-fuchsia-100 hover:underline font-bold"
+            className=" md:text-2xl text-xl lg:text-2xl text-pink-500 hover:text-purple-500 hover:underline font-bold"
           >
             ToyTopia
           </Link>
@@ -89,38 +96,54 @@ const Navbar = () => {
           <ul className="menu menu-horizontal px-1">{links}</ul>
         </div>
         <div className="navbar-end">
-          <div className="flex gap-5 items-center">
+          <div className="flex gap-5 items-center relative">
             {user ? (
-              <div
-                className="tooltip tooltip-bottom border-0"
-                data-tip={`${user.displayName || "User"} (${user.email})`}
-              >
-                <div className="tooltip-content">
-                  <div
-                    className="py-3 px-4 text-white text-base rounded-lg
-                 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500
-                 shadow-lg border-0"
-                  >
-                    {`${user.displayName || "User"} (${user.email})`}
-                  </div>
-                </div>
-
+              <div className="relative">
+                {/* Profile Picture */}
                 <img
-                  className="w-12 h-12 border border-gray-500 bg-blue-300 rounded-full cursor-pointer "
+                  onClick={() => setDropdownOpen(!dropdownOpen)}
+                  className="w-12 h-12 border border-gray-500 bg-blue-300 rounded-full cursor-pointer"
                   src={user.photoURL}
                   alt={user.displayName || "User"}
                 />
+
+                {/* Dropdown */}
+                {dropdownOpen && (
+                  <div className="absolute right-0 mt-2 w-56 bg-white border border-gray-200 rounded-lg shadow-lg z-50">
+                    {/* User Info */}
+                    <div className="p-4 border-b border-gray-100">
+                      <p className="font-semibold text-gray-800">
+                        {user.displayName || "User"}
+                      </p>
+                      <p className="text-sm text-gray-500 truncate">
+                        {user.email}
+                      </p>
+                    </div>
+
+                    {/* Profile Link */}
+                    <Link
+                      to="/profile"
+                      className="flex  items-center gap-2 px-4  rounded my-1 text-gray-700  font-medium"
+                      onClick={() => setDropdownOpen(false)}
+                    >
+                      <User className="text-primary font-bold" size={18} />
+                      Profile
+                    </Link>
+
+                    <button
+                      onClick={handleLogout}
+                      className=" btn  w-full  btn-sm bg-secondary text-left my-1 hover:bg-purple-500 rounded font-semibold"
+                    >
+                      Logout
+                    </button>
+                  </div>
+                )}
               </div>
             ) : (
-              <p></p>
-            )}
-
-            {user ? (
-              <Link onClick={handleLogout} className="btn btn-primary px-1 md:px-3 lg:px-5">
-                Logout
-              </Link>
-            ) : (
-              <Link to="/login" className="btn btn-primary p-5">
+              <Link
+                to="/login"
+                className="btn text-white hover:border-0 font-semibold bg-pink-500 hover:bg-purple-500 px-4 py-2"
+              >
                 Login
               </Link>
             )}

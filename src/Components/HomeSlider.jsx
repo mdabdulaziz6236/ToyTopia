@@ -25,20 +25,20 @@ const HomeSlider = () => {
         pagination={{ clickable: true }}
         style={{ "--swiper-pagination-color": "#ec4899" }}
       >
-        {toys.map((toy) => (
+        {toys.slice(0, 9).map((toy) => (
           <SwiperSlide key={toy.toyId}>
             <div className="relative z-0 rounded-2xl overflow-hidden">
               <img
                 src={toy.pictureURL}
                 alt={toy.toyName}
-                className="w-full h-[300px] lg:h-[400px] object-cover brightness-75 transition-transform duration-700 hover:scale-105"
+                className="w-full h-[200px] md:h-[300px] lg:h-[400px] object-cover brightness-75 transition-transform duration-700 hover:scale-105"
               />
-              {/* Gradient overlay */}
-              <div className="absolute inset-0 bg-black/30"></div>
+              {/* linear overlay */}
+              <div className="absolute inset-0 bg-black/20"></div>
 
               {/* Text overlay */}
               <div className="absolute bottom-6 left-6 max-w-lg text-white">
-                <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold drop-shadow-lg">
+                <h2 className="text-xl  md:text-3xl lg:text-4xl font-bold drop-shadow-lg">
                   {toy.toyName}
                 </h2>
               </div>
